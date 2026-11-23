@@ -375,3 +375,29 @@ h2 { font-size: 38px; line-height: 1.12; letter-spacing: 0; }
 .advisor-specialty { display: block; max-width: 300px; line-height: 1.7; }
 @media(max-width:760px) { .brand span { max-width: 240px; font-size: 7px; } .certification { max-width: 100%; font-size: 8px; } }
 @media(max-width:420px) { .brand img { width: 32px; height: 32px; } .brand { gap: 7px; } .brand span { max-width: 160px; font-size: 6px; } .metric strong { font-size: 22px; } }
+
+.header-brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
+.header-bodyguard { display: flex; align-items: center; flex: 0 0 auto; }
+.header-bodyguard img { display: block; width: 43px; height: 43px; object-fit: contain; }
+.header-tagline { color: var(--muted-foreground); font-size: 10px; line-height: 1.5; white-space: nowrap; }
+.lisci-logo { width: 94px; height: 42px; object-fit: contain; border-radius: 3px; }
+.ideal-note { color: #fff; font-size: 16px; line-height: 1.65; font-weight: 700; }
+.ideal-note strong { font-weight: 700; }
+.institution-slot { background: #fff; border: 1px solid color-mix(in oklab,var(--highlight) 30%,transparent); border-style: solid; border-radius: 16px; padding: 12px 18px; box-shadow: 0 6px 20px color-mix(in oklab,var(--highlight) 11%,transparent); }
+.institution-slot img { width: 100%; max-width: 150px; max-height: 58px; object-fit: contain; }
+.testimonial-card { min-height: 270px; }
+.scenario-card { gap: 13px; }
+.scenario-avatar { display: grid; place-items: center; width: 38px; height: 38px; color: var(--highlight); border: 1px solid color-mix(in oklab,var(--highlight) 40%,transparent); border-radius: 50%; background: color-mix(in oklab,var(--highlight) 9%,var(--card)); box-shadow: 0 0 16px color-mix(in oklab,var(--highlight) 13%,transparent); }
+.scenario-card h3 { margin: 4px 0 0; font-size: 17px; line-height: 1.45; }
+.scenario-card p { margin: 0; color: var(--soft-highlight); font-size: 13px; line-height: 1.75; }
+.scenario-card > footer { margin-top: auto; padding-top: 13px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: 11px; line-height: 1.6; }
+
+/* Primary actions use the dark, softly illuminated capsule from the reference. */
+.button-titanium { background: linear-gradient(180deg, oklch(0.23 0.025 258), oklch(0.12 0.018 258)); border: 1px solid color-mix(in oklab,var(--highlight) 38%,var(--border)); color: var(--foreground); box-shadow: 0 0 0 1px color-mix(in oklab,var(--highlight) 8%,transparent), 0 8px 25px color-mix(in oklab,var(--highlight) 17%,transparent), 0 0 28px color-mix(in oklab,var(--highlight) 12%,transparent); border-radius: 999px; font-weight: 800; }
+.button-titanium:hover { border-color: color-mix(in oklab,var(--highlight) 70%,white); box-shadow: 0 0 0 1px color-mix(in oklab,var(--highlight) 14%,transparent), 0 10px 32px color-mix(in oklab,var(--highlight) 24%,transparent), 0 0 34px color-mix(in oklab,var(--highlight) 18%,transparent); filter: brightness(1.12); }
+.button-titanium:active { transform: translateY(1px); filter: brightness(.96); }
+.button-titanium:focus-visible { outline: 2px solid var(--highlight); outline-offset: 3px; }
+:is(.certification,.free-badge,.available,.date-badge,.step-label,.eyebrow,.header-tagline) { filter: drop-shadow(0 0 8px color-mix(in oklab,var(--highlight) 14%,transparent)); }
+.certification,.free-badge,.available,.date-badge { box-shadow: 0 0 14px color-mix(in oklab,var(--highlight) 13%,transparent); }
+@media(max-width:760px) { .header-brand { gap: 8px; } .header-bodyguard img { width: 36px; height: 36px; } .header-tagline { font-size: 8px; } .lisci-logo { width: 68px; height: 34px; } .ideal-note { font-size: 13px; } }
+@media(max-width:420px) { .header-brand { gap: 6px; } .header-bodyguard img { width: 30px; height: 30px; } .header-tagline { font-size: 7px; } .lisci-logo { width: 52px; height: 28px; } }

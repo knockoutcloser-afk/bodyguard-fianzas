@@ -25,10 +25,7 @@ export const Route = createFileRoute("/api/public/fianzas-events")({
           return Response.json({ success: false }, { status: 400, headers });
         }
 
-        const webhookUrl = process.env["FIANZAS_WEBHOOK_URL"];
-        if (!webhookUrl) {
-          return Response.json({ success: false, code: "webhook_not_configured" }, { status: 503, headers });
-        }
+        const webhookUrl = process.env["FIANZAS_WEBHOOK_URL"] || "https://hook.us2.make.com/kvppue2rt4erz2xqyik7pgy35wfv5n1h";
         try {
           const destination = new URL(webhookUrl);
           if (destination.protocol !== "https:" || !/^hook\.[a-z0-9-]+\.make\.com$/i.test(destination.hostname)) {
