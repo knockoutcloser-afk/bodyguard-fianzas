@@ -8,8 +8,19 @@ export const Route = createFileRoute("/api/public/fianzas-events")({
       POST: async ({ request }) => {
         const headers = { "Cache-Control": "no-store" };
         const origin = request.headers.get("Origin");
-        if (origin && origin !== new URL(request.url).origin) {
-          return Response.json({ success: false }, { status: 403, headers });
+        if (origin) {
+          let originHost = "";
+          try {
+            originHost = new URL(origin).host;
+          } catch {
+            return Response.json({ success: false }, { status: 403, headers });
+          }
+          const requestHost = new URL(request.url).host;
+          const forwardedHost = request.headers.get("x-forwarded-host");
+          const host = request.headers.get("host");
+          if (![requestHost, forwardedHost, host].some((allowedHost) => allowedHost?.toLowerCase() === originHost.toLowerCase())) {
+            return Response.json({ success: false }, { status: 403, headers });
+          }
         }
         if (Number(request.headers.get("Content-Length") ?? 0) > 8192) {
           return Response.json({ success: false }, { status: 413, headers });

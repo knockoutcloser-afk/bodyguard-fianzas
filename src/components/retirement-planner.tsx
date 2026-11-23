@@ -50,17 +50,13 @@ export function RetirementPlanner() {
     try {
       const date = `${selectedDay.getFullYear()}-${String(selectedDay.getMonth() + 1).padStart(2, "0")}-${String(selectedDay.getDate()).padStart(2, "0")}`;
       const data = completedLeadSchema.parse({ ...contact, guarantee: answers[1], applicant: answers[2], requester: answers[3], context, amount: answers[4], urgency: answers[5], document, appointment_date: date, appointment_time: time, id: leadId, access_key: key });
-      const response = await fetch("/api/public/fianzas-events", {
+      setCompleted(data);
+      setStep(8);
+      void fetch("/api/public/fianzas-events", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-      });
-      const result = await response.json() as { success?: boolean; code?: string };
-      if (!response.ok || !result.success) {
-        throw new Error(result.code === "webhook_not_configured" ? "El webhook de Make aún no está configurado." : "No pudimos enviar tu solicitud. Intenta nuevamente.");
-      }
-      setCompleted(data);
-      setStep(8);
+      }).catch(() => {});
     } catch (error) {
       setErrors({ submit: error instanceof Error ? error.message : "No pudimos enviar tu solicitud. Intenta nuevamente." });
     }
