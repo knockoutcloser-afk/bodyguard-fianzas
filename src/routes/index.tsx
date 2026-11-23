@@ -4,8 +4,8 @@ import { ArrowRight, BadgeCheck, Check, LockKeyhole, Clock3, FileText, UserRound
 import { Button } from "@/components/ui/button";
 import { RetirementPlanner } from "@/components/retirement-planner";
 import { InstitutionMarquee, TestimonialCarousel } from "@/components/trust-carousels";
-import logo from "@/assets/bodyguard-financiero-logo.jpg.asset.json";
-import portrait from "@/assets/abraham-solis.jpg.asset.json";
+import logo from "@/assets/bodyguard-financiero-logo.jpg";
+import portrait from "@/assets/abraham-solis.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -15,9 +15,9 @@ export const Route = createFileRoute("/")({
     { property: "og:title", content: "Bodyguard Financiero | Fianzas y respaldo LISCI" },
     { property: "og:description", content: "Atención directa en fianzas para tu contrato, con Abraham Solís y el respaldo operativo de LISCI Enlace Empresarial." },
     { property: "og:type", content: "website" },
-    { property: "og:image", content: portrait.url },
+    { property: "og:image", content: portrait },
     { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:image", content: portrait.url },
+    { name: "twitter:image", content: portrait },
   ] }),
 });
 
@@ -36,7 +36,7 @@ const faqs = [
 ];
 
 function Brand() {
-  return <a className="brand" href="#inicio" aria-label="Bodyguard Financiero, inicio"><img src={logo.url} alt="Logo de Bodyguard Financiero" /><div><strong>Bodyguard Financiero</strong><span>ABRAHAM SOLÍS · ALIANZA ESTRATÉGICA CON LISCI ENLACE EMPRESARIAL</span></div></a>;
+  return <a className="brand" href="#inicio" aria-label="Bodyguard Financiero, inicio"><img src={logo} alt="Logo de Bodyguard Financiero" /><div><strong>Bodyguard Financiero</strong><span>ABRAHAM SOLÍS · ALIANZA ESTRATÉGICA CON LISCI ENLACE EMPRESARIAL</span></div></a>;
 }
 function ConsultButton({ className = "", label = "Revisar mi fianza" }: { className?: string; label?: string }) {
   return <Button variant="titanium" asChild className={className}><a href="#planificador">{label}<ArrowRight /></a></Button>;
@@ -45,7 +45,7 @@ function Index() {
   const [legal, setLegal] = useState<string | null>(null);
   return (
     <><header className="site-header"><div className="container header-inner"><Brand /><nav className="desktop-nav" aria-label="Navegación principal"><a href="#como-funciona">Cómo funciona</a><a href="#beneficios">Garantías</a><a href="#respaldo">Respaldo</a><a href="#preguntas">Preguntas</a></nav><ConsultButton className="nav-cta" /></div></header>
-    <main id="inicio"><section className="hero"><div className="container"><div className="hero-grid"><div className="hero-copy"><div className="certification"><Shield size={16} aria-hidden="true" />ASESORÍA EN FIANZAS · RESPALDO OPERATIVO LISCI ENLACE EMPRESARIAL</div><h1>¿Te pidieron una <em>fianza</em> para <em>tu contrato</em>?</h1><p>Soy <strong>Abraham Solís</strong>. En alianza estratégica y con el respaldo operativo de <strong>LISCI Enlace Empresarial</strong>, te acompaño a entender qué garantía te solicitan, revisar requisitos y avanzar con tu trámite.</p><div className="hero-checks"><span><Check />Anticipo · Cumplimiento · Vicios ocultos</span><span><Check />Atención directa · Trámite acompañado</span></div><div className="hero-actions"><ConsultButton label="Revisar mi fianza" /><Button variant="outline" asChild><a href="#como-funciona">Cómo funciona</a></Button></div><div className="hero-divider" /><div className="hero-advisor"><img src={portrait.url} alt="Abraham Solís" /><div><strong>Abraham Solís</strong><small>Director Asociado</small></div><div className="advisor-certified"><BadgeCheck size={22} /><span>Tu contrato,<br />con respaldo operativo.</span></div></div></div><RetirementPlanner /></div><div className="ideal-note"><Users />Para constructoras, contratistas, proveedores y prestadores de servicios: personas físicas y empresas.</div></div></section>
+    <main id="inicio"><section className="hero"><div className="container"><div className="hero-grid"><div className="hero-copy"><div className="certification"><Shield size={16} aria-hidden="true" />ASESORÍA EN FIANZAS · RESPALDO OPERATIVO LISCI ENLACE EMPRESARIAL</div><h1>¿Te pidieron una <em>fianza</em> para <em>tu contrato</em>?</h1><p>Soy <strong>Abraham Solís</strong>. En alianza estratégica y con el respaldo operativo de <strong>LISCI Enlace Empresarial</strong>, te acompaño a entender qué garantía te solicitan, revisar requisitos y avanzar con tu trámite.</p><div className="hero-checks"><span><Check />Anticipo · Cumplimiento · Vicios ocultos</span><span><Check />Atención directa · Trámite acompañado</span></div><div className="hero-actions"><ConsultButton label="Revisar mi fianza" /><Button variant="outline" asChild><a href="#como-funciona">Cómo funciona</a></Button></div><div className="hero-divider" /><div className="hero-advisor"><img src={portrait} alt="Abraham Solís" /><div><strong>Abraham Solís</strong><small>Director Asociado</small></div><div className="advisor-certified"><BadgeCheck size={22} /><span>Tu contrato,<br />con respaldo operativo.</span></div></div></div><RetirementPlanner /></div><div className="ideal-note"><Users />Para constructoras, contratistas, proveedores y prestadores de servicios: personas físicas y empresas.</div></div></section>
     <section className="metrics" aria-label="Nuestra experiencia"><div className="container metrics-grid">{[{ value: "40+", label: "Años de trayectoria · LISCI Enlace Empresarial", icon: BadgeCheck }, { value: "10", label: "Afianzadoras aliadas · una sola puerta", icon: Building2 }, { value: "65+", label: "Agentes aliados · red de operación LISCI", icon: Users }, { value: "Integral", label: "Acompañamiento · revisión, cotización, emisión y seguimiento", icon: HeartHandshake }].map(item => <div className="metric" key={item.label}><item.icon /><div><strong>{item.value}</strong><span>{item.label}</span></div></div>)}</div></section>
     <section id="como-funciona" className="section"><div className="container"><div className="section-header"><span className="eyebrow">CLARO, SENCILLO Y A TU RITMO</span><h2>Tu trámite de fianza en <em className="gradient-text">3 pasos</em></h2><p>Del requerimiento a la revisión, cotización y seguimiento de tu fianza.</p></div><div className="steps-grid">{[{ icon: FileText, title: "Comparte tu requerimiento", text: "Completa las 6 preguntas en menos de 2 minutos." }, { icon: UserRoundCheck, title: "Revisión y cotización", text: "Analizamos tu caso con el respaldo operativo de LISCI Enlace Empresarial entre opciones de afianzadoras." }, { icon: HeartHandshake, title: "Trámite y seguimiento", text: "Te acompañamos en requisitos, emisión y atención posterior." }].map((item, i) => <article className="step" key={item.title}><div className="step-icon"><item.icon /></div><span className="step-number">0{i + 1}</span><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>
     <section id="beneficios" className="section alt"><div className="container"><div className="section-header"><span className="eyebrow">GARANTÍAS</span><h2>Garantías clave para <em className="gradient-text">tu contrato</em></h2><p>Identifica el respaldo que solicitan para las obligaciones de tu contrato.</p></div><div className="benefits-grid">{benefits.map(item => <article className="benefit" key={item.title}><div className="benefit-icon"><item.icon /></div><div><h3>{item.title}</h3><p>{item.text}</p></div></article>)}</div></div></section>
