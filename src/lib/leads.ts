@@ -18,7 +18,7 @@ export function toMakeLeadPayload(input: CompletedLead) {
     nombre_completo: data.name,
     correo_electronico: data.email,
     codigo_postal: data.postal,
-    telefono_whatsapp: `+52 ${data.phone}`,
+    telefono_whatsapp: `52${data.phone}`,
     tipo_fianza: data.guarantee,
     perfil: data.applicant,
     solicitante: data.requester,
