@@ -408,3 +408,21 @@ h2 { font-size: 38px; line-height: 1.12; letter-spacing: 0; }
 @media(max-width:760px) { .certification { gap: 8px; } .certification-bodyguard { width: 21px; height: 21px; } .certification-lisci { width: 53px; height: 24px; } }
 @media(max-width:420px) { .certification { gap: 6px; font-size: 7px; padding-inline: 8px; } .certification-bodyguard { width: 18px; height: 18px; } .certification-lisci { width: 43px; height: 21px; } }
 @media(max-width:760px) { .footer-top { align-items: flex-start; flex-wrap: wrap; } .footer-brand-group { gap: 10px; } .footer-lisci-logo { width: 68px; height: 34px; } .footer-links { width: 100%; justify-content: flex-start; } }
+
+@media(max-width:767px) {
+  body, main { overflow-x: hidden; }
+  input:not([type="hidden"]), select, textarea { font-size: 16px !important; }
+  .marquee-window:hover .marquee-track,
+  .marquee-window.is-paused .marquee-track { animation-play-state: running; }
+  .marquee-toggle { display: none; }
+  .button-titanium { box-shadow: var(--glow-titanium); }
+  .button-primary { box-shadow: var(--glow-primary); }
+  .button-whatsapp { box-shadow: var(--glow-whatsapp); }
+  .footer-top { align-items: center; }
+  .footer-brand-group { align-items: center; gap: 16px; overflow: visible; }
+  .footer-top .brand img { width: 50px; height: 50px; filter: drop-shadow(0 0 9px color-mix(in oklab,var(--highlight) 44%,transparent)); }
+  .footer-lisci-logo { width: 112px; height: 54px; filter: drop-shadow(0 0 10px color-mix(in oklab,var(--highlight) 48%,transparent)); }
+  .footer-bottom { font-size: 12px; line-height: 1.85; }
+  .footer-bottom span { font-size: 12px; }
+  .footer-bottom p { font-size: 13px; }
+}
