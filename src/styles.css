@@ -249,7 +249,7 @@ h2 { font-size: 29px; line-height: 1.35; font-weight: 800; margin: 0; }
 .footer-brand-group { display: flex; align-items: center; gap: 16px; min-width: 0; }
 .footer-top .brand img { width: 36px; height: 36px; }
 .footer-top .brand strong { font-size: 12px; }
-.footer-lisci-logo { width: 86px; height: 40px; object-fit: contain; padding: 4px; border-radius: 5px; background: #fff; }
+.footer-lisci-logo { width: 86px; height: 40px; object-fit: contain; filter: drop-shadow(0 0 8px color-mix(in oklab,var(--highlight) 42%,transparent)); mix-blend-mode: screen; }
 .footer-links { display: flex; gap: 15px; }
 .footer-links button { color: var(--muted-foreground); font-size: 10px; padding: 0; }
 .footer-bottom { border-top: 1px solid color-mix(in oklab,var(--border) 60%,transparent); margin-top: 24px; padding-top: 19px; display: flex; justify-content: space-between; gap: 35px; font-size: 9px; color: var(--muted-foreground); line-height: 1.8; }
