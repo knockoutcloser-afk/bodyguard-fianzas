@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight, Pause, Play, UserRound } from "lucide-react";
+import { useState } from "react";
+import { Pause, Play, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const institutions = [
@@ -36,21 +35,12 @@ export function InstitutionMarquee() {
 }
 
 export function TestimonialCarousel() {
-  const [ref, api] = useEmblaCarousel({ loop: true, align: "start", dragFree: true });
-  const [paused, setPaused] = useState(false);
-  const [interacting, setInteracting] = useState(false);
-  useEffect(() => {
-    if (!api || paused || interacting || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => api.scrollNext(), 4500);
-    return () => window.clearInterval(timer);
-  }, [api, paused, interacting]);
-  return <div className="testimonial-carousel" role="region" aria-label="Escenarios de acompañamiento" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={event => { if (!event.currentTarget.contains(event.relatedTarget)) setInteracting(false); }}>
-    <div className="testimonial-window" ref={ref}><div className="testimonial-track">{scenarios.map(item => <article className="testimonial-card scenario-card" key={item.title}>
+  return <div className="testimonial-carousel" role="region" aria-label="Escenarios de acompañamiento">
+    <div className="testimonial-window"><div className="testimonial-track">{[0, 1].map(copy => <div className="testimonial-group" key={copy} aria-hidden={copy === 1 || undefined}>{scenarios.map(item => <article className="testimonial-card scenario-card" key={`${copy}-${item.title}`}>
       <span className="scenario-avatar" aria-hidden="true"><UserRound size={17} /></span>
       <h3>{item.title}</h3>
       <p>{item.description}</p>
       <footer>{item.footer}</footer>
-    </article>)}</div></div>
-    <div className="carousel-controls"><Button variant="ghost" size="icon" aria-label="Caso anterior" title="Anterior" onClick={() => api?.scrollPrev()}><ArrowLeft /></Button><Button variant="ghost" size="icon" aria-label={paused ? "Reanudar casos" : "Pausar casos"} title={paused ? "Reanudar" : "Pausar"} onClick={() => setPaused(!paused)}>{paused ? <Play /> : <Pause />}</Button><Button variant="ghost" size="icon" aria-label="Caso siguiente" title="Siguiente" onClick={() => api?.scrollNext()}><ArrowRight /></Button></div>
+    </article>)}</div>)}</div></div>
   </div>;
 }

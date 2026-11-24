@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { completedLeadSchema } from "@/lib/leads";
+import { completedLeadSchema, toMakeLeadPayload } from "@/lib/leads";
 import type { CompletedLead } from "@/lib/leads";
 
 export const Route = createFileRoute("/api/public/fianzas-events")({
@@ -42,11 +42,10 @@ export const Route = createFileRoute("/api/public/fianzas-events")({
           if (destination.protocol !== "https:" || !/^hook\.[a-z0-9-]+\.make\.com$/i.test(destination.hostname)) {
             return Response.json({ success: false }, { status: 500, headers });
           }
-          const { id: _id, access_key: _accessKey, ...lead } = data;
           const response = await fetch(destination, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ ...lead, timestamp: new Date().toISOString() }),
+            body: JSON.stringify(toMakeLeadPayload(data)),
             signal: AbortSignal.timeout(10000),
             redirect: "manual",
           });

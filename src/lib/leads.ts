@@ -11,6 +11,31 @@ export const completedLeadSchema = contactSchema.extend({
 });
 export type CompletedLead = z.infer<typeof completedLeadSchema>;
 
+export function toMakeLeadPayload(input: CompletedLead) {
+  const data = completedLeadSchema.parse(input);
+  return {
+    lead_id: data.id,
+    nombre_completo: data.name,
+    correo_electronico: data.email,
+    codigo_postal: data.postal,
+    telefono_whatsapp: `+52 ${data.phone}`,
+    tipo_fianza: data.guarantee,
+    perfil: data.applicant,
+    solicitante: data.requester,
+    contexto: data.context,
+    monto: data.amount,
+    urgencia: data.urgency,
+    disponibilidad_documento: data.document,
+    fecha_cita: data.appointment_date,
+    hora_cita: data.appointment_time,
+    estatus: "cita_solicitada",
+    whatsapp_clicked: false,
+    origen: "bodyguard-financiero-web",
+    zona_horaria: "America/Mexico_City",
+    timestamp: new Date().toISOString(),
+  };
+}
+
 export function leadWhatsAppUrl(input: CompletedLead) {
   const data = completedLeadSchema.parse(input);
   const message = `Hola Abraham, completé mi diagnóstico de fianza:
